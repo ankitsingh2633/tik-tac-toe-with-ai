@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>tik tac toe</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+  /* CSS styles */
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+	
+  }
+
+  .board button {
+    width: 100px;
+    height: 100px;
+    font-size: 36px;
+    background-color: #f2f2f2;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .board button:hover {
+    background-color: #e6e6e6;
+  }
+
+  h3, h2 {
+      color: #fdfbfb;
+      text-align: center;
+	  margin-top:100px;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 24px;
+      color: rgb(106, 106, 124);
+      text-align: center;
+    }
+</style>
+
+</style>
+<body class="is-boxed has-animations">
+    <div class="body-wrap boxed-container">
+
+        <main>
+            <section class="hero">
+                <div class="container">
+                    <div class="hero-inner">
+						<div class="hero-copy">
+	                        <h1 class="hero-title mt-0">TIK TAC TOE WITH AI</h1>
+	                        <p class="hero-paragraph">Tic Tac Toe with AI is a game where players take turns marking cells in a 3x3 grid to form a line of their respective symbols, either "X" or "O"</p>
+	                        <div class="hero-cta"><a class="button button-shadow" onclick="refreshPage()" href="#">RESTART</a></div>
+						</div>
+						<div class="hero-app">
+							<h3>Star Here..!</h3>
+							<div class="board">
+                                <button onclick="makeMove(0, 0)"></button>
+                             <button onclick="makeMove(0, 1)"></button>
+                                <button onclick="makeMove(0, 2)"></button>
+                              <button onclick="makeMove(1, 0)"></button>
+                                 <button onclick="makeMove(1, 1)"></button>
+                              <button onclick="makeMove(1, 2)"></button>
+                                  <button onclick="makeMove(2, 0)"></button>
+                              <button onclick="makeMove(2, 1)"></button>
+                                   <button onclick="makeMove(2, 2)"></button>
+                              </div>
+							  <h2 id="messageContainer" class="message"></h2>
+                            <div class="hero-app-dots hero-app-dots-1">
+								<svg width="124" height="75" xmlns="http://www.w3.org/2000/svg">
+								    <g fill="none" fill-rule="evenodd">
+								        <path fill="#FFF" d="M33.392 0l3.624 1.667.984 3.53-1.158 3.36L33.392 10l-3.249-1.639L28 5.196l1.62-3.674z"/>
+								        <path fill="#7487A3" d="M74.696 3l1.812.833L77 5.598l-.579 1.68L74.696 8l-1.624-.82L72 5.599l.81-1.837z"/>
+								        <path fill="#556B8B" d="M40.696 70l1.812.833.492 1.765-.579 1.68-1.725.722-1.624-.82L38 72.599l.81-1.837z"/>
+								        <path fill="#7487A3" d="M4.314 37l2.899 1.334L8 41.157l-.926 2.688L4.314 45l-2.6-1.31L0 41.156l1.295-2.94zM49.314 32l2.899 1.334.787 2.823-.926 2.688L49.314 40l-2.6-1.31L45 36.156l1.295-2.94z"/>
+								        <path fill="#556B8B" d="M99.696 56l1.812.833.492 1.765-.579 1.68-1.725.722-1.624-.82L97 58.599l.81-1.837zM112.696 37l1.812.833.492 1.765-.579 1.68-1.725.722-1.624-.82L110 39.599l.81-1.837zM82.696 37l1.812.833.492 1.765-.579 1.68-1.725.722-1.624-.82L80 39.599l.81-1.837zM122.618 57l1.087.5.295 1.059-.347 1.008-1.035.433-.975-.492-.643-.95.486-1.101z"/>
+								    </g>
+								</svg>
+                            </div>
+							<div class="hero-app-dots hero-app-dots-2">
+								<svg width="124" height="75" xmlns="http://www.w3.org/2000/svg">
+								    <g fill="none" fill-rule="evenodd">
+								        <path fill="#556B8B" d="M33.392 0l3.624 1.667.984 3.53-1.158 3.36L33.392 10l-3.249-1.639L28 5.196l1.62-3.674zM74.696 3l1.812.833L77 5.598l-.579 1.68L74.696 8l-1.624-.82L72 5.599l.81-1.837zM40.696 70l1.812.833.492 1.765-.579 1.68-1.725.722-1.624-.82L38 72.599l.81-1.837zM4.314 37l2.899 1.334L8 41.157l-.926 2.688L4.314 45l-2.6-1.31L0 41.156l1.295-2.94zM49.314 32l2.899 1.334.787 2.823-.926 2.688L49.314 40l-2.6-1.31L45 36.156l1.295-2.94z"/>
+								        <path fill="#FFF" d="M99.696 56l1.812.833.492 1.765-.579 1.68-1.725.722-1.624-.82L97 58.599l.81-1.837z"/>
+								        <path fill="#556B8B" d="M112.696 37l1.812.833.492 1.765-.579 1.68-1.725.722-1.624-.82L110 39.599l.81-1.837z"/>
+								        <path fill="#FFF" d="M82.696 37l1.812.833.492 1.765-.579 1.68-1.725.722-1.624-.82L80 39.599l.81-1.837z"/>
+								        <path fill="#556B8B" d="M122.618 57l1.087.5.295 1.059-.347 1.008-1.035.433-.975-.492-.643-.95.486-1.101z"/>
+								    </g>
+								</svg>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </section>
+			
+        </main>
+
+        
+    </div>
+
+    
+	<script>
+    // JavaScript code
+	let currentPlayer = 'X';
+    let gameActive = true;
+    const board = [
+      ['', '', ''],
+      ['', '', ''],
+      ['', '', '']
+    ];
+
+    function makeMove(row, col) {
+      if (board[row][col] === '' && gameActive) {
+        board[row][col] = currentPlayer;
+        event.target.innerText = currentPlayer;
+        event.target.disabled = true;
+
+        if (checkWin()) {
+          displayMessage(`Player ${currentPlayer} wins!`);
+          gameActive = false;
+        } else if (checkDraw()) {
+          displayMessage("It's a draw!");
+          gameActive = false;
+        } else {
+          currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+          if (currentPlayer === 'O') {
+            makeAIMove();
+          }
+        }
+      }
+    }
+
+    function makeAIMove() {
+      let availableSpots = [];
+      for (let row = 0; row < 3; row++) {
+        for (let col = 0; col < 3; col++) {
+          if (board[row][col] === '') {
+            availableSpots.push({ row, col });
+          }
+        }
+      }
+
+      const randomIndex = Math.floor(Math.random() * availableSpots.length);
+      const { row, col } = availableSpots[randomIndex];
+
+      board[row][col] = currentPlayer;
+      const buttons = document.querySelectorAll('.board button');
+      buttons[row * 3 + col].innerText = currentPlayer;
+      buttons[row * 3 + col].disabled = true;
+
+      if (checkWin()) {
+        displayMessage(`Player ${currentPlayer} wins!`);
+        gameActive = false;
+      } else if (checkDraw()) {
+        displayMessage("It's a draw!");
+        gameActive = false;
+      } else {
+        currentPlayer = 'X';
+      }
+    }
+
+    function checkWin() {
+      // Check rows
+      for (let row = 0; row < 3; row++) {
+        if (board[row][0] === currentPlayer && board[row][1] === currentPlayer && board[row][2] === currentPlayer) {
+          return true;
+        }
+      }
+
+      // Check columns
+      for (let col = 0; col < 3; col++) {
+        if (board[0][col] === currentPlayer && board[1][col] === currentPlayer && board[2][col] === currentPlayer) {
+          return true;
+        }
+      }
+
+      // Check diagonals
+      if (board[0][0] === currentPlayer && board[1][1] === currentPlayer && board[2][2] === currentPlayer) {
+        return true;
+      }
+      if (board[0][2] === currentPlayer && board[1][1] === currentPlayer && board[2][0] === currentPlayer) {
+        return true;
+      }
+
+      return false;
+    }
+
+    function checkDraw() {
+      for (let row = 0; row < 3; row++) {
+        for (let col = 0; col < 3; col++) {
+          if (board[row][col] === '') {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    function displayMessage(message) {
+      const messageContainer = document.getElementById("messageContainer");
+      messageContainer.innerText = message;
+      messageContainer.style.display = "block";
+    }
+  </script>
+</body>
+</html>
